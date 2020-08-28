@@ -269,7 +269,13 @@
     } 
 
     add(menuProduct) {
+      const thisCart = this;
       console.log('adding product', menuProduct);
+      const generatedHTML = templates.cartProduct(menuProduct);
+      console.log(generatedHTML);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      console.log(generatedDOM);
+      thisCart.dom.productList.appendChild(generatedDOM);
     }
 
   
