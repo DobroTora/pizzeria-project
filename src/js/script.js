@@ -121,6 +121,7 @@
       thisProduct.amount = thisProduct.amountWidget.value;
       app.cart.add(thisProduct);
     }
+    
 
     getElements() {
       const thisProduct = this;
@@ -276,7 +277,10 @@
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       console.log(generatedDOM);
       thisCart.dom.productList.appendChild(generatedDOM);
+      thisCart.products.push((menuProduct, generatedDOM));
+      console.log('thisCart.products', thisCart.products);
     }
+    
 
   
     getElements(element){
@@ -284,7 +288,8 @@
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
 
-      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);     // podsumowanie koszyka - górna belka
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     }
 
     initActions(){
@@ -294,6 +299,8 @@
       });
     }
   }
+
+  
 
   const app = { 
     initMenu: function(){
